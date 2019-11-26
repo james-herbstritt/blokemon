@@ -1,24 +1,21 @@
 <template>
   <div class="pokemon-info" id="pokemon-info">
     {{ data.pokemon }}
-    <button v-on:click='getAllPokemon'>
-      Get All Pokemon
-    </button>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { PokemonService } from '../services/PokemonService'
+import PokemonService from '../services/PokemonService'
 
 @Component
 export default class PokemonInfo extends Vue {
-  @Prop() private data!: {
+  @Prop() private data: {
     pokemon: string
-   } = { pokemon: 'Default Pokemon' }
+   } = { pokemon: this.getPokemon() }
 
-  getAllPokemon ():void {
-    PokemonService.getInstance().getPokemon()
+  getPokemon ():void {
+    PokemonService.getInstance().getPokemonById('1')
       .then(pokemon => { this.data.pokemon = JSON.stringify(pokemon) })
   };
 }

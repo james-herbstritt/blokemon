@@ -1,4 +1,4 @@
-export class PokemonService {
+export default class PokemonService {
   private static _instance: PokemonService;
   static baseUrl: string = 'https://pokeapi.co/api/v2/pokemon/';
 
@@ -8,8 +8,14 @@ export class PokemonService {
     }
   }
 
-  async getPokemon () {
+  async getAllPokemon () {
     let response = await fetch(PokemonService.baseUrl)
+    let pokemon = await response.json()
+    return pokemon
+  }
+
+  async getPokemonById (id:string) {
+    let response = await fetch(PokemonService.baseUrl + id)
     let pokemon = await response.json()
     return pokemon
   }
