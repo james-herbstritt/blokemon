@@ -1,6 +1,11 @@
 <template>
-  <div class="pokemon-info" id="pokemon-info">
-    {{ data.pokemon }}
+  <div>
+    <div v-if="$store.state.selectedPokemon" class="pokemon-info" id="pokemon-info">
+    {{ $store.state.selectedPokemon }}
+    </div>
+    <button @click="getPokemon">
+        get Bulbasaur
+    </button>
   </div>
 </template>
 
@@ -10,13 +15,11 @@ import PokemonService from '../services/PokemonService'
 
 @Component
 export default class PokemonInfo extends Vue {
-  @Prop() private data: {
-    pokemon: string
-   } = { pokemon: this.getPokemon() }
+  private pokemon: string;
 
   getPokemon ():void {
     PokemonService.getInstance().getPokemonById('1')
-      .then(pokemon => { this.data.pokemon = JSON.stringify(pokemon) })
+      .then(pokemon => { this.$store.commit('selectPokemon', JSON.stringify(pokemon)) })
   };
 }
 </script>

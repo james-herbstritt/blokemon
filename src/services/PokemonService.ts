@@ -3,9 +3,7 @@ export default class PokemonService {
   static baseUrl: string = 'https://pokeapi.co/api/v2/pokemon/';
 
   public static getInstance () {
-    if (PokemonService._instance == null) {
-      return this._instance || (this._instance = new this())
-    }
+    return this._instance || (this._instance = new this())
   }
 
   async getAllPokemon () {
