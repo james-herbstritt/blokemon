@@ -1,10 +1,9 @@
 <template>
-  <div id="app">
+  <div id="app" class="container">
     <nav class="navbar" id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/pokemon_info">PokemonInfo</router-link>
-      <div>
-        <form role="search">
+      <router-link class="nav-item" to="/">Home</router-link>
+      <router-link class="nav-item" to="/pokemon_info">PokemonInfo</router-link>
+        <form class="nav-item" role="search">
           <input
             type="search"
             id="pokemonSearch"
@@ -16,9 +15,7 @@
             required
             v-model="searchText"
           />
-          <button class="btn-block" @click="searchPokemon">Search</button>
         </form>
-      </div>
     </nav>
     <router-view />
   </div>
