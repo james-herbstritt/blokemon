@@ -1,6 +1,7 @@
 <template>
   <div>
     <div v-if="$store.state.selectedPokemon" class="pokemon-info" id="pokemon-info">
+       <h2> {{ $store.state.selectedPokemon.name }} </h2>
        <img v-bind:src="$store.state.selectedPokemon.sprites.front_default" alt="Image
        not found">
 
@@ -18,7 +19,6 @@
          </p>
        </div>
 
-       <h2> {{ $store.state.selectedPokemon.name }} </h2>
        <h3> Abilities </h3>
        <p v-for="ability in $store.state.selectedPokemon.abilities"
           v-bind:key="ability.url">
@@ -37,9 +37,6 @@
                {{ stat.stat.name }}: {{stat.base_stat}}
        </p>
     </div>
-    <button @click="getPokemon">
-        get Bulbasaur
-    </button>
   </div>
 </template>
 
@@ -48,14 +45,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 import PokemonService from '../services/PokemonService'
 
 @Component
-export default class PokemonInfo extends Vue {
-  private pokemon: string;
-
-  getPokemon ():void {
-    PokemonService.getInstance().getPokemonById('1')
-      .then(pokemon => { this.$store.commit('selectPokemon', pokemon) })
-  };
-}
+export default class PokemonInfo extends Vue {}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
