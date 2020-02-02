@@ -1,10 +1,13 @@
 <template>
-  <div id="app" class="container">
-    <nav class="navbar" id="nav">
-      <router-link class="nav-item" to="/">Home</router-link>
-      <router-link class="nav-item" to="/pokemon_info">PokemonInfo</router-link>
-        <form class="nav-item" role="search">
+  <div id="app">
+    <nav class="navbar navbar-dark bg-dark" id="nav">
+      <div class="container">
+        <router-link class="navbar-brand" to="/">Home</router-link>
+        <router-link class="nav-item" to="/pokemon_info"
+          >PokemonInfo</router-link>
+        <form class="form-inline" role="search">
           <input
+            class="form-control"
             type="search"
             id="pokemonSearch"
             maxlength="20"
@@ -15,9 +18,11 @@
             required
             v-model="searchText"
           />
+          <button class="btn btn-primary">Search</button>
         </form>
+      </div>
     </nav>
-    <router-view />
+    <router-view/>
   </div>
 </template>
 
@@ -27,9 +32,7 @@ import PokemonService from './services/PokemonService'
 
 @Component
 export default class App extends Vue {
-  data: {
-    searchText: '';
-  };
+  private searchText : string = '';
   searchPokemon (): void {
     PokemonService.getInstance()
       .getPokemonById(this.searchText)
@@ -61,4 +64,5 @@ export default class App extends Vue {
     }
   }
 }
+
 </style>

@@ -10,8 +10,6 @@ export default new Vuex.Store({
   mutations: {
     selectPokemon (state, pokemon) {
       state.selectedPokemon = pokemon
-      console.log('Selecting pokemon', pokemon)
-      console.log('Selected pokemon', state.selectedPokemon)
     }
   },
   actions: {
