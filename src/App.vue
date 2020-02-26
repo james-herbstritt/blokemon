@@ -35,7 +35,7 @@ export default class App extends Vue {
   private searchText : string = '';
   searchPokemon (): void {
     PokemonService.getInstance()
-      .getPokemonById(this.searchText)
+      .getPokemonById(this.searchText.toLowerCase())
       .then(pokemon => {
         this.$store.commit('selectPokemon', pokemon)
       })
