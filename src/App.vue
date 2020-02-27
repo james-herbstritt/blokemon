@@ -6,7 +6,7 @@
         <router-link class="nav-item" to="/pokemon_info"
           >PokemonInfo</router-link
         >
-        <form class="form-inline" role="search">
+        <form class="form-inline" role="search" id="searchForm">
           <input
             class="form-control"
             type="search"
@@ -19,11 +19,11 @@
             required
             v-model="searchText"
           />
-          <button class="btn btn-primary">Search</button>
+          <button v-on:click="searchPokemon" class="btn btn-primary">Search</button>
         </form>
       </div>
     </nav>
-    <router-view />
+    <router-view/>
   </div>
 </template>
 
@@ -40,30 +40,12 @@ export default class App extends Vue {
       .then(pokemon => {
         this.$store.commit('selectPokemon', pokemon)
       })
-      .then({})
+      .then(() => {
+        this.$router.push('/pokemon_info')
+      })
   }
 }
 </script>
 
 <style lang="less">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>
