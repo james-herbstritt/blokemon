@@ -4,7 +4,8 @@
       <div class="container">
         <router-link class="navbar-brand" to="/">Home</router-link>
         <router-link class="nav-item" to="/pokemon_info"
-          >PokemonInfo</router-link>
+          >PokemonInfo</router-link
+        >
         <form class="form-inline" role="search">
           <input
             class="form-control"
@@ -22,7 +23,7 @@
         </form>
       </div>
     </nav>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
@@ -32,13 +33,14 @@ import PokemonService from './services/PokemonService'
 
 @Component
 export default class App extends Vue {
-  private searchText : string = '';
+  private searchText: string = '';
   searchPokemon (): void {
     PokemonService.getInstance()
       .getPokemonById(this.searchText)
       .then(pokemon => {
         this.$store.commit('selectPokemon', pokemon)
       })
+      .then({})
   }
 }
 </script>
@@ -64,5 +66,4 @@ export default class App extends Vue {
     }
   }
 }
-
 </style>
