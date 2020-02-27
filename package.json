@@ -37,11 +37,22 @@
     "@vue/test-utils": "1.0.0-beta.29",
     "chromedriver": "77",
     "eslint": "^5.16.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-vue": "^5.0.0",
     "geckodriver": "^1.19.0",
+    "husky": "^4.2.3",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
+    "prettier": "^1.19.1",
     "typescript": "~3.5.3",
     "vue-template-compiler": "^2.6.10"
+  },
+
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint"
+    }
   }
 }
