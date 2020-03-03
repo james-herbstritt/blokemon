@@ -12,18 +12,20 @@ import PokemonService from '../services/PokemonService'
 
 @Component
 export default class PokemonListItem extends Vue {
-  @Prop() private data: {
-    pokemon: string
-   } = { pokemon: this.getPokemon() }
-
-  getPokemon ():void {
-    PokemonService.getInstance().getPokemonById('1')
-      .then(pokemon => { this.data.pokemon = JSON.stringify(pokemon) })
-  };
+//  @Prop private data: {
+//    pokemon: string
+//  } = { pokemon: this.getPokemon() }
+//
+//  getPokemon (): void {
+//    PokemonService.getInstance()
+//      .getPokemonById('1')
+//      .then(pokemon => {
+//        this.data.pokemon = JSON.stringify(pokemon)
+//      })
+//  }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 h3 {
   margin: 40px 0 0;
