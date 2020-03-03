@@ -3,9 +3,6 @@
     <nav class="navbar navbar-dark bg-dark" id="nav">
       <div class="container">
         <router-link class="navbar-brand" to="/">Home</router-link>
-        <router-link class="nav-item" to="/pokemon_info"
-          >PokemonInfo</router-link
-        >
         <form class="form-inline" role="search" id="searchForm">
           <input
             class="form-control"
@@ -19,11 +16,13 @@
             required
             v-model="searchText"
           />
-          <button v-on:click="searchPokemon" class="btn btn-primary">Search</button>
+          <button v-on:click="searchPokemon" class="btn btn-primary">
+            Search
+          </button>
         </form>
       </div>
     </nav>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
@@ -33,7 +32,7 @@ import PokemonService from './services/PokemonService'
 
 @Component
 export default class App extends Vue {
-  private searchText: string = '';
+  private searchText: string = ''
   searchPokemon (): void {
     PokemonService.getInstance()
       .getPokemonById(this.searchText.toLowerCase())
@@ -47,5 +46,4 @@ export default class App extends Vue {
 }
 </script>
 
-<style lang="less">
-</style>
+<style lang="less"></style>
