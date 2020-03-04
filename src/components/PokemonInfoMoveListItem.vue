@@ -1,7 +1,5 @@
 <template>
-  <li v-bind:id="id" class="list-group-item">
-    {{ move.move.name }}
-  </li>
+    <a v-bind:id="id" class="list-group-item" href="#">{{ move.move.name }}</a>
 </template>
 
 <script lang="ts">
@@ -21,4 +19,8 @@ export default class PokemonInfoMoveListItem extends Vue {
 }
 </script>
 
-<style scoped lang="less"></style>
+<style scoped lang="less">
+.list-group-item {
+  text-align: center;
+}
+</style>
