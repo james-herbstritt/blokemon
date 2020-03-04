@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <nav class="navbar navbar-dark bg-dark" id="nav">
-      <div class="container">
+      <div class="container-fluid">
         <router-link class="navbar-brand" to="/">Home</router-link>
         <form class="form-inline" role="search" id="searchForm">
           <input

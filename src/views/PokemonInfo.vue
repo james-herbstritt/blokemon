@@ -16,38 +16,45 @@
         v-bind:name="$store.state.selectedPokemon.name"
       />
 
-      <h3>Type</h3>
-      <div v-if="$store.state.selectedPokemon.types.length === 1">
-        <p>
-          {{ $store.state.selectedPokemon.types[0].type.name }}
-        </p>
-      </div>
-      <div v-if="$store.state.selectedPokemon.types.length === 2">
-        <p>
-          {{ $store.state.selectedPokemon.types[0].type.name }} |
-          {{ $store.state.selectedPokemon.types[1].type.name }}
-        </p>
-      </div>
+      <div class="row">
+        <div class="col-6 text-center">
+          <h3>Type</h3>
+          <div v-if="$store.state.selectedPokemon.types.length === 1">
+            <p>
+              {{ $store.state.selectedPokemon.types[0].type.name }}
+            </p>
+          </div>
+          <div v-if="$store.state.selectedPokemon.types.length === 2">
+            <p>
+              {{ $store.state.selectedPokemon.types[0].type.name }} |
+              {{ $store.state.selectedPokemon.types[1].type.name }}
+            </p>
+          </div>
+        </div>
 
-      <h3>Abilities</h3>
-      <p
-        v-for="ability in $store.state.selectedPokemon.abilities"
-        v-bind:key="ability.url"
-      >
-        {{ ability.ability.name }}
-      </p>
-
-      <h3>Base Stats</h3>
-      <ul class="list-group">
-        <li
-          v-for="stat in $store.state.selectedPokemon.stats"
-          v-bind:key="stat.stat.url"
-          class="list-group-item "
-        >
-         {{ stat.base_stat }}
-        <span class="badge">{{ stat.stat.name }}</span>
-        </li>
-      </ul>
+        <div class="col-6 text-center">
+          <h3>Abilities</h3>
+          <p
+            v-for="ability in $store.state.selectedPokemon.abilities"
+            v-bind:key="ability.url"
+          >
+            {{ ability.ability.name }}
+          </p>
+        </div>
+      </div>
+        <div class="col-8 center-block">
+        <h3>Base Stats</h3>
+        <ul class="list-group">
+          <li
+            v-for="stat in $store.state.selectedPokemon.stats"
+            v-bind:key="stat.stat.url"
+            class="list-group-item "
+          >
+            <span class="badge">{{ stat.stat.name }}: </span>
+            {{ stat.base_stat }}
+          </li>
+        </ul>
+      </div>
     </div>
 
     <h3 id="move-label">Moves</h3>
@@ -81,7 +88,7 @@ h3 {
 }
 
 #move-label {
-  text-align: center;
+  text-align: left;
   margin: 40px 0 0;
 }
 ul {
@@ -108,5 +115,11 @@ li {
   margin-right: auto;
   width: 180px;
   height: auto;
+}
+
+.center-block {
+   margin-left:auto;
+   margin-right:auto;
+   display:block;
 }
 </style>
