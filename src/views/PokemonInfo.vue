@@ -44,7 +44,7 @@
       </div>
       <div class="col-8 center-block">
         <h3>Base Stats</h3>
-        <PokemonBaseStats
+        <PokemonBaseStatsList
           id="pokmon-base-stats"
           v-bind:stats="$store.state.selectedPokemon.stats"
         />
@@ -65,14 +65,14 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import PokemonInfoMoveListItem from '../components/PokemonInfoMoveListItem.vue'
-import PokemonBaseStats from '../components/PokemonBaseStats.vue'
+import PokemonBaseStatsList from '../components/PokemonBaseStatsList.vue'
 import PokemonName from '../components/PokemonName.vue'
 
 @Component({
   components: {
     PokemonInfoMoveListItem,
     PokemonName,
-    PokemonBaseStats
+    PokemonBaseStatsList
   }
 })
 export default class PokemonInfo extends Vue {}

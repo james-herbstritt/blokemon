@@ -1,17 +1,17 @@
 <template>
   <ul class="list-group" v-bind:theseStats="theseStats">
-    <PokemonBaseStat v-bind:stat="theseStats.hp" />
-    <PokemonBaseStat v-bind:stat="theseStats.attack" />
-    <PokemonBaseStat v-bind:stat="theseStats.defense" />
-    <PokemonBaseStat v-bind:stat="theseStats.specialAttack" />
-    <PokemonBaseStat v-bind:stat="theseStats.specialDefense" />
-    <PokemonBaseStat v-bind:stat="theseStats.speed" />
+    <PokemonBaseStatsListItem v-bind:stat="theseStats.hp" />
+    <PokemonBaseStatsListItem v-bind:stat="theseStats.attack" />
+    <PokemonBaseStatsListItem v-bind:stat="theseStats.defense" />
+    <PokemonBaseStatsListItem v-bind:stat="theseStats.specialAttack" />
+    <PokemonBaseStatsListItem v-bind:stat="theseStats.specialDefense" />
+    <PokemonBaseStatsListItem v-bind:stat="theseStats.speed" />
   </ul>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import PokemonBaseStat from './PokemonBaseStat.vue'
+import PokemonBaseStatsListItem from './PokemonBaseStatsListItem.vue'
 
 @Component({
   computed: {
@@ -28,10 +28,10 @@ import PokemonBaseStat from './PokemonBaseStat.vue'
     }
   },
   components: {
-    PokemonBaseStat
+    PokemonBaseStatsListItem
   }
 })
-export default class PokemonBaseStats extends Vue {
+export default class PokemonBaseStatsList extends Vue {
   @Prop() stats: Array<object>
 
   getStatByName (name): object {
