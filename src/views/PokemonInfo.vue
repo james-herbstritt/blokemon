@@ -16,7 +16,7 @@
         v-bind:name="$store.state.selectedPokemon.name"
       />
 
-      <div class="row">
+      <div id="type-ability" class="row">
         <div class="col-6 text-center">
           <h3>Type</h3>
           <div v-if="$store.state.selectedPokemon.types.length === 1">
@@ -42,22 +42,16 @@
           </p>
         </div>
       </div>
-        <div class="col-8 center-block">
+      <div class="col-8 center-block">
         <h3>Base Stats</h3>
-        <ul class="list-group">
-          <li
-            v-for="stat in $store.state.selectedPokemon.stats"
-            v-bind:key="stat.stat.url"
-            class="list-group-item "
-          >
-            <span class="badge">{{ stat.stat.name }}: </span>
-            {{ stat.base_stat }}
-          </li>
-        </ul>
+        <PokemonBaseStats
+          id="pokmon-base-stats"
+          v-bind:stats="$store.state.selectedPokemon.stats"
+        />
       </div>
     </div>
 
-    <h3 id="move-label">Moves</h3>
+    <h3 id="move-label" class="col-8">Moves</h3>
     <ul id="move-list" class="list-group">
       <PokemonInfoMoveListItem
         v-for="move in $store.state.selectedPokemon.moves"
@@ -71,12 +65,14 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import PokemonInfoMoveListItem from '../components/PokemonInfoMoveListItem.vue'
+import PokemonBaseStats from '../components/PokemonBaseStats.vue'
 import PokemonName from '../components/PokemonName.vue'
 
 @Component({
   components: {
     PokemonInfoMoveListItem,
-    PokemonName
+    PokemonName,
+    PokemonBaseStats
   }
 })
 export default class PokemonInfo extends Vue {}
@@ -118,8 +114,8 @@ li {
 }
 
 .center-block {
-   margin-left:auto;
-   margin-right:auto;
-   display:block;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 </style>

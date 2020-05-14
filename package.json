@@ -48,7 +48,6 @@
     "typescript": "~3.5.3",
     "vue-template-compiler": "^2.6.10"
   },
-
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint",
