@@ -16,7 +16,7 @@ import PokemonBaseStatsListItem from './PokemonBaseStatsListItem.vue'
 @Component({
   computed: {
     theseStats (): object {
-      const rv: object = {
+      return {
         hp: this.getStatByName('hp'),
         attack: this.getStatByName('attack'),
         defense: this.getStatByName('defense'),
@@ -24,7 +24,6 @@ import PokemonBaseStatsListItem from './PokemonBaseStatsListItem.vue'
         specialDefense: this.getStatByName('special-defense'),
         speed: this.getStatByName('speed')
       }
-      return rv
     }
   },
   components: {

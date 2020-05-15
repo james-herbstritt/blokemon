@@ -54,7 +54,7 @@
     <h3 id="move-label" class="col-8">Moves</h3>
     <ul id="move-list" class="list-group">
       <PokemonInfoMoveListItem
-        v-for="move in $store.state.selectedPokemon.moves"
+        v-for="move in sortedMoveList"
         v-bind:key="move.move.url"
         v-bind:move="move"
       />
@@ -73,6 +73,13 @@ import PokemonName from '../components/PokemonName.vue'
     PokemonInfoMoveListItem,
     PokemonName,
     PokemonBaseStatsList
+  },
+  computed: {
+    sortedMoveList (): Array<object> {
+      return this.$store.state.selectedPokemon.moves.sort(
+        (m1, m2) => m1.move.name > m2.move.name
+      )
+    }
   }
 })
 export default class PokemonInfo extends Vue {}
